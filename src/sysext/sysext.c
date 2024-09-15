@@ -1260,6 +1260,7 @@ static int write_extensions_file(ImageClass image_class, char **extensions, cons
         if (atfd < 0)
                 return log_error_errno(atfd, "Failed to open '%s': %m", f);
 
+        log_error("Fixing %s with %s", f, hierarchy);
         r = mac_selinux_fix_full(atfd, NULL, hierarchy, 0);
         if (r < 0)
                 return log_error_errno(r, "Failed to fix SELinux label for '%s': %m", f);
@@ -1298,6 +1299,7 @@ static int write_dev_file(ImageClass image_class, const char *meta_path, const c
         if (atfd < 0)
                 return log_error_errno(atfd, "Failed to open '%s': %m", f);
 
+        log_error("Fixing %s with %s", f, hierarchy);
         r = mac_selinux_fix_full(atfd, NULL, hierarchy, 0);
         if (r < 0)
                 return log_error_errno(r, "Failed to fix SELinux label for '%s': %m", f);
@@ -1332,6 +1334,7 @@ static int write_work_dir_file(ImageClass image_class, const char *meta_path, co
         if (atfd < 0)
                 return log_error_errno(atfd, "Failed to open '%s': %m", f);
 
+        log_error("Fixing %s with %s", f, hierarchy);
         r = mac_selinux_fix_full(atfd, NULL, hierarchy, 0);
         if (r < 0)
                 return log_error_errno(r, "Failed to fix SELinux label for '%s': %m", f);
@@ -1376,6 +1379,7 @@ static int store_info_in_meta(
         if (atfd < 0)
                 return log_error_errno(atfd, "Failed to open '%s': %m", f);
 
+        log_error("Fixing %s with %s", f, hierarchy);
         r = mac_selinux_fix_full(atfd, NULL, hierarchy, 0);
         if (r < 0)
                 return log_error_errno(r, "Failed to fix SELinux label for '%s': %m", f);
